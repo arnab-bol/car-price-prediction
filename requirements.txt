@@ -1,0 +1,126 @@
+# 🚗 Car Selling Price Prediction
+
+A Machine Learning project that predicts the approximate selling price of a used car based on its showroom price, age, kilometers driven, fuel type, transmission, seller type, and number of previous owners.
+
+
+
+## 📌 Project Overview
+
+Buying and selling used cars can be challenging because their resale prices depend on several factors. This project uses regression algorithms to estimate a car's selling price from its specifications and usage history.
+
+The project implements a complete machine learning workflow, including data preprocessing, feature engineering, model training, performance evaluation, model comparison, and price prediction.
+
+## 🎯 Objectives
+
+- Analyze the provided used-car dataset.
+- Prepare relevant features for machine learning.
+- Handle missing values through preprocessing pipelines.
+- Create a new feature, `Car_Age`, from the manufacturing year.
+- Train and compare multiple regression algorithms.
+- Evaluate models using MAE, RMSE, and R² score.
+- Save the best-performing model for future predictions.
+- Visualize prediction performance and feature importance.
+
+## 📂 Dataset
+
+**File:** `car.csv`
+
+The dataset contains 301 records and 9 columns.
+
+| Feature | Description |
+|---|---|
+| `Car_Name` | Name of the car |
+| `Year` | Year of manufacture |
+| `Selling_Price` | Selling price (target variable) |
+| `Present_Price` | Showroom price |
+| `Kms_Driven` | Kilometers driven |
+| `Fuel_Type` | Petrol, Diesel, or CNG |
+| `Seller_Type` | Dealer or Individual |
+| `Transmission` | Manual or Automatic |
+| `Owner` | Number of previous owners |
+
+The `Car_Name` column is excluded from the initial model. The `Year` column is transformed into `Car_Age`, which represents the age of the car at the time the script is run.
+
+## 🛠️ Technologies Used
+
+- **Python** — programming language
+- **Pandas** — data manipulation
+- **NumPy** — numerical computation
+- **Scikit-learn** — preprocessing, regression, and evaluation
+- **Matplotlib** — visualization
+- **Joblib** — saving and loading the trained model
+
+## 🤖 Machine Learning Algorithms
+
+Three regression algorithms are evaluated:
+
+1. **Linear Regression** — baseline regression model.
+2. **Random Forest Regressor** — ensemble of decision trees.
+3. **Gradient Boosting Regressor** — sequential ensemble that improves predictions by learning from previous errors.
+
+The model with the lowest test-set RMSE is selected as the best model.
+
+## ⚙️ Project Workflow
+
+1. Load the dataset.
+2. Inspect the data and check missing values.
+3. Remove duplicate records and invalid target values.
+4. Engineer the `Car_Age` feature.
+5. Impute missing numerical and categorical values when necessary.
+6. Encode categorical features using One-Hot Encoding.
+7. Split the data into training and testing sets (80:20).
+8. Train three regression models.
+9. Compare MAE, RMSE, and R² score.
+10. Save the best-performing model.
+11. Generate actual-versus-predicted and feature-importance graphs.
+12. Use the saved model to predict prices for new cars.
+
+## 📊 Model Evaluation
+
+Results from the current experiment:
+
+| Model | MAE | RMSE | R² Score |
+|---|---:|---:|---:|
+| Linear Regression | 1.473 | 2.524 | 0.753 |
+| Random Forest | 1.539 | 3.740 | 0.457 |
+| **Gradient Boosting** | **1.125** | **2.495** | **0.758** |
+
+Gradient Boosting achieved the lowest RMSE among the evaluated models.
+
+- **MAE:** Average absolute difference between actual and predicted prices.
+- **RMSE:** Error metric that penalizes larger prediction errors more strongly.
+- **R² score:** Measures how well the model explains price variation on the test set.
+
+These results come from one 80:20 train/test split with `random_state=42`. Performance may vary on new data.
+
+## 📈 Visualizations
+
+### Actual vs Predicted Prices
+
+The scatter plot compares actual selling prices with model predictions. Points closer to the diagonal reference line represent more accurate predictions.
+
+### Feature Importance
+
+The feature-importance graph shows which inputs the selected tree-based model relies on most. In the current experiment, `Present_Price` is the most influential feature, followed by `Car_Age`.
+
+## 📁 Project Structure
+
+```text
+INTERMEDIATE_level/
+├── data/
+│   └── car.csv
+├── models/
+│   └── best_model.joblib
+├── main.py
+├── predict.py
+├── model_results.csv
+├── actual_vs_predicted.png
+├── feature_importance.png
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+The dataset and saved model may be excluded from the public repository using `.gitignore`. Run `main.py` to recreate the model and evaluation outputs.
+
+## 🚀 Installation and
