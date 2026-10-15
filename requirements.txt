@@ -3,7 +3,6 @@
 A Machine Learning project that predicts the approximate selling price of a used car based on its showroom price, age, kilometers driven, fuel type, transmission, seller type, and number of previous owners.
 
 
-
 ## 📌 Project Overview
 
 Buying and selling used cars can be challenging because their resale prices depend on several factors. This project uses regression algorithms to estimate a car's selling price from its specifications and usage history.
@@ -123,4 +122,56 @@ INTERMEDIATE_level/
 
 The dataset and saved model may be excluded from the public repository using `.gitignore`. Run `main.py` to recreate the model and evaluation outputs.
 
-## 🚀 Installation and
+## 🚀 Installation and Execution
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/car-price-prediction.git
+cd car-price-prediction
+```
+
+### 2. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Add the dataset
+
+Place the permitted `car.csv` dataset inside the `data/` directory.
+
+### 4. Train and evaluate
+
+```bash
+python main.py
+```
+
+This trains the models and generates the saved model, comparison results, and graphs.
+
+### 5. Predict a car's selling price
+
+```bash
+python predict.py
+```
+
+Enter the showroom price, kilometers driven, fuel type, seller type, transmission, previous owners, and car age when prompted.
+
+## 🔮 Example Prediction
+
+For one example input, the model returned a predicted selling price of `4.45` dataset units.
+
+The prediction is an estimate, not a guaranteed market price. Confirm the dataset's documented price units before interpreting the result as a specific currency amount.
+
+## ⚠️ Limitations
+
+- The dataset is relatively small, with 301 records.
+- Results depend on the dataset and train/test split.
+- The model may not generalize to all car brands, locations, and market conditions.
+- Feature importance does not establish causation.
+- Predictions should not replace a professional vehicle inspection or current market valuation.
+
+## ✅ Conclusion
+
+This project demonstrates how regression algorithms can be applied to used-car price estimation. Gradient Boosting performed best among the three evaluated models on the current test split. The saved model and prediction script make it possible to estimate prices for new car inputs.
+
